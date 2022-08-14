@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.springbootfirst.entity.Category;
+import com.springboot.springbootfirst.entity.Task;
 import com.springboot.springbootfirst.entity.User;
 import com.springboot.springbootfirst.repository.UserRepo;
 import com.springboot.springbootfirst.services.CategoryServiceImpl;
+import com.springboot.springbootfirst.services.TaskServiceImpl;
 import com.springboot.springbootfirst.services.UserServiceImpl;
 
 @SpringBootApplication(exclude =
@@ -26,6 +28,8 @@ public class SpringbootFirstApplication
 	UserRepo itemRepo;
 	@Autowired
 	CategoryServiceImpl catServImpl;
+	@Autowired
+	TaskServiceImpl taskServImpl;
 
 	public static void main(String[] args)
 	{
@@ -64,6 +68,21 @@ public class SpringbootFirstApplication
 
 		// CategoryServiceImpl obj = new CategoryServiceImpl();
 		catServImpl.createCategory(reqBody);
+
+		System.out.println("Data creation complete...");
+		return "hello";
+	}
+
+	// @ResponseBody
+	@PostMapping(path = "/task", consumes = "application/json", produces = "application/json")
+	public String createTask(RequestEntity<Task> requestEntity)
+	{
+		System.out.println("Data creation started.. -");
+
+		Task reqBody = requestEntity.getBody();
+
+		// CategoryServiceImpl obj = new CategoryServiceImpl();
+		taskServImpl.createTask(reqBody);
 
 		System.out.println("Data creation complete...");
 		return "hello";
