@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.springboot.springbootfirst.entity.User;
 
 @Repository
-public interface ItemRepository extends MongoRepository<User, String> {
+public interface UserRepo extends MongoRepository<User, String> {
     public long count();
 }
