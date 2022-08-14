@@ -10,10 +10,10 @@ import com.springboot.springbootfirst.repository.ItemRepository;
 public class UserServiceImpl 
 {
 	//@Autowired ItemRepository itemRepo;
-	public void createUser(ItemRepository itemRepo) 
+	public void createUser(User reqUser, ItemRepository itemRepo) 
 	{
-		System.out.println("Data creation started...itemRepo -"+itemRepo);
-        itemRepo.save(new User("krishnaji", "radhaji", "radhekrishna@gmail.com"));
+		System.out.println("Data creation started...itemRepo -" + reqUser);
+		itemRepo.save(reqUser);
         System.out.println("Data creation complete...");
 	}
 }
